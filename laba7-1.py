@@ -1,3 +1,4 @@
+import random
 while True:
     m=input("Введите кол-во столбцов: ")
     n=input("Введите кол-во строк: ")
@@ -6,14 +7,22 @@ while True:
             n=int(n)
             m=int(m)
             break
-sp=[[0]*m for i in range(n)]
 
+sp=[[0]*m for i in range(n)]
 for i in range(n):
     for j in range(m):
-        sp[i][j]=i+j+2
+        sp[i][j]=random.randint(0,9)
 
-for k in sp:
-    print(*k)
+while True:
+    k=input("Введите натуральное чилсо меньше или равное n: ")
+    if k.isdigit():
+        if int(k)<=int(m):
+            k=int(k)
+            break
 
-for text in range(len(sp)):
-    print("Сумма эл-ов строки номер", str(text+1)+":", sum(sp[text]), sep=' ')
+for p in sp:
+    print(*p)
+
+print("Элементы k-го столбца ниже:")
+for i in range(n):
+    print(sp[i][k-1])
