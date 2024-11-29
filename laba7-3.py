@@ -1,26 +1,31 @@
 while True:
-    n=input("Введите число эл-ов в словаре: ")
+    n = input("Введите число эл-ов в словаре: ")
     if n.isdigit():
-        if int(n)!=0:
-            n=int(n)
+        if int(n) != 0:
+            n = int(n)
             break
+slovar = dict()
 
-slovar=dict()
 for _ in range(n):
     while True:
-        a=input("Введите сначала страну, затем название(я) рек через пробел: ").split()
-        if len(a)>=2 and "end" not in a:
-            for i in range(1,len(a)):
-                slovar[a[i]]=a[0]
-        break
+        a = input("Введите название страны и через запятую городов: ")
+        if len(a.split()) >= 2 and ("end" not in a or "end," not in a):
+            strana=(a.split()[0])
+            count=0
+            for i in a:
+                if i!=" ":
+                    count+=1
+                else:
+                    break
+            a=a[count:]
+            a=a.split(",")
+            for i in a:
+                slovar[i]=strana
+            break
 
 while True:
-    k=input("Введите название вашей реки, для выхода пропишите 'end': ")
-    if k=="end":
-        print("Удачки)")
-        break
+    z=input("Напишите название вашего города, для выхода пропишите 'end': ")
+    if z in slovar:
+        print("Город",z,"находится в",slovar[z],sep=" ")
     else:
-        if k in slovar:
-            print(k, "протекает в", slovar[k], sep=" ")
-        else:
-            print("Ууупс... Кажется такой реки нету!")
+        print("Ууупс... Кажется такого города нету!")
