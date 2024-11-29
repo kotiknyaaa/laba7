@@ -1,28 +1,32 @@
 import random
 while True:
-    m=input("Введите кол-во столбцов: ")
     n=input("Введите кол-во строк: ")
+    m=input("Введите кол-во столбцов: ")
     if m.isdigit() and n.isdigit():
         if int(m)!=0 and int(n)!=0:
             n=int(n)
             m=int(m)
             break
-sp=[[0]*m for i in range(n)]
-count=0
 
+sp=[[0] * m for _ in range(n)]
 for i in range(n):
     for j in range(m):
-        sp[i][j]=random.randint(-3,3)
+        sp[i][j]=random.randint(0,9)
 
-for k in sp:
-    print(*k)
+for text in sp:
+    print(*text)
 
-for p in range(m):
-    check=True
-    for z in range(n):
-        if sp[z][p]==0:
-            check=False
-    if check==True:
-        count+=1
+for i in range(n):
+    mn=99999
+    for j in range(m):
+        if sp[i][j]<mn:
+            mn=sp[i][j]
+    sp[i].insert(0,mn)
+sp.sort()
 
-print("Кол-во столбцов без нулевого эл-а:", count, sep=" ")
+for i in range(n):
+    sp[i].pop(0)
+
+print("Готовый список: ")
+for text in sp:
+    print(*text)
