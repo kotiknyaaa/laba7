@@ -1,28 +1,28 @@
 import random
 while True:
-    m=input("Введите кол-во столбцов: ")
-    n=input("Введите кол-во строк: ")
+    m=input("Введите кол-во строк: ")
+    n=input("Введите кол-во столбцов: ")
     if m.isdigit() and n.isdigit():
         if int(m)!=0 and int(n)!=0:
             n=int(n)
             m=int(m)
             break
 
-sp=[[0]*m for i in range(n)]
-for i in range(n):
-    for j in range(m):
+sp=[[0] * n for _ in range(m)]
+for i in range(m):
+    for j in range(n):
         sp[i][j]=random.randint(0,9)
 
+for text in sp:
+    print(*text)
+
 while True:
-    k=input("Введите натуральное чилсо меньше или равное n: ")
+    k=input("Введите число столбца: ")
     if k.isdigit():
-        if int(k)<=int(m):
+        if int(k)<=n and int(k)!=0:
             k=int(k)
             break
 
-for p in sp:
-    print(*p)
-
-print("Элементы k-го столбца ниже:")
-for i in range(n):
+print("k-ый столбец:")
+for i in range(m):
     print(sp[i][k-1])
