@@ -23,7 +23,6 @@ for _ in range(n):
                 slovar[i]=strana
             break
 
-print(slovar)
 while True:
     z=input("Напишите название вашего города, для выхода пропишите 'end': ")
     if z in slovar:
